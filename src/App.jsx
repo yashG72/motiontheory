@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import Intro from "./components/Intro.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Career from "./pages/Career.jsx";
@@ -30,6 +31,7 @@ export default function App() {
 
   return (
     <>
+      <Intro />
       <a className="skip" href="#main">Skip to content</a>
       <Header />
       <main id="main">

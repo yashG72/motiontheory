@@ -889,3 +889,155 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
   .step:nth-child(3)::before { display: none; }
 }
 @media (max-width: 560px) { .step + .step::before { display: none; } }
+
+/* =========================================================
+   Opening titles (Intro.jsx): the logo builds on a dark frame,
+   then the frame lifts away to reveal the page
+   ========================================================= */
+
+html.intro, html.intro body { overflow: hidden; }
+/* Hold the hero's own entrance until the frame lifts */
+html.intro .hero-title .line > span { animation-play-state: paused; }
+
+.intro-screen {
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #0d0d0c;
+  color: var(--paper);
+  overflow: hidden;
+  cursor: default;
+  clip-path: inset(0 0 0 0);
+}
+.intro-screen.is-out {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1s cubic-bezier(.76, 0, .24, 1) .12s;
+}
+
+/* Soft moving light and film grain, standing in for a shader */
+.intro-screen::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(40% 35% at 50% 55%, rgba(252, 250, 246, .09), transparent 70%),
+    radial-gradient(30% 30% at 30% 30%, rgba(200, 64, 44, .06), transparent 70%);
+  animation: intro-drift 6s ease-in-out infinite alternate;
+}
+@keyframes intro-drift { to { transform: translate(4%, -3%) scale(1.08); } }
+
+.intro-grain {
+  position: absolute;
+  inset: -50%;
+  opacity: .12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: intro-grain .6s steps(4) infinite;
+  pointer-events: none;
+}
+@keyframes intro-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5%, 3%); }
+  50% { transform: translate(4%, -4%); }
+  75% { transform: translate(-3%, -2%); }
+  100% { transform: translate(2%, 5%); }
+}
+
+.intro-logo {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(46px, 11vw, 148px);
+  line-height: 1.04;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.is-out .intro-logo {
+  transform: translateY(-8vh) scale(.96);
+  opacity: 0;
+  filter: blur(6px);
+  transition: transform .9s cubic-bezier(.76, 0, .24, 1), opacity .7s ease, filter .7s ease;
+}
+
+.intro-line {
+  display: block;
+  margin-right: -0.16em; /* cancel the tracking after the last letter */
+  white-space: nowrap;
+}
+.intro-char {
+  display: inline-block;
+  animation: intro-char 1s var(--ease) both;
+  animation-delay: calc(.2s + var(--i) * .07s);
+}
+@keyframes intro-char {
+  from { transform: translateY(70%); opacity: 0; filter: blur(12px); }
+  60% { filter: blur(0); }
+  to { transform: none; opacity: 1; filter: blur(0); }
+}
+
+/* The O's bar draws in once the letters have landed */
+.intro-o { vertical-align: -0.02em; border-width: max(1.5px, 0.03em); }
+.intro-o::after { height: max(1.5px, 0.03em); transform: scaleX(0); animation: intro-bar-in .6s var(--ease) 1.05s both; }
+@keyframes intro-bar-in { to { transform: scaleX(1); } }
+
+.intro-tagline {
+  margin-top: 0.9em;
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: clamp(9px, .15em, 18px);
+  letter-spacing: 0.6em;
+  margin-right: -0.6em;
+  white-space: nowrap;
+  animation: intro-tagline 1.2s var(--ease) 1.15s both;
+}
+.intro-tagline i { font-style: normal; margin-inline: 1.2em; opacity: .7; }
+@keyframes intro-tagline {
+  from { opacity: 0; letter-spacing: 1.2em; margin-right: -1.2em; }
+  to { opacity: .85; letter-spacing: 0.6em; margin-right: -0.6em; }
+}
+
+/* Playhead along the bottom, with a load count */
+.intro-bar {
+  position: absolute;
+  left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  bottom: max(28px, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(252, 250, 246, .6);
+  animation: intro-fade .6s ease .2s both;
+}
+.is-out .intro-bar { opacity: 0; transition: opacity .3s ease; }
+@keyframes intro-fade { from { opacity: 0; } }
+.intro-track {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 1px;
+  background: rgba(252, 250, 246, .15);
+}
+.intro-track span {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  transform-origin: left;
+  animation: intro-load 2.2s cubic-bezier(.5, 0, .2, 1) .15s both;
+}
+@keyframes intro-load { from { transform: scaleX(0); } }
+
+@property --intro-n { syntax: "<integer>"; initial-value: 0; inherits: false; }
+.intro-count {
+  font-variant-numeric: tabular-nums;
+  counter-reset: n var(--intro-n);
+  animation: intro-count 2.2s cubic-bezier(.5, 0, .2, 1) .15s both;
+}
+.intro-count::after { content: counter(n, decimal-leading-zero) "%"; }
+@keyframes intro-count { from { --intro-n: 0; } to { --intro-n: 100; } }

@@ -16,6 +16,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=IBM+Plex+Mono&family=Jost:wght@300;400;500&display=swap" />
+    <script>
+      // Opening titles (src/components/Intro.jsx), skipped for reduced motion
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("intro");
+    </script>
+    <style>html.intro, html.intro body { background: #0d0d0c; }</style>
   </head>
   <body>
     <div id="root"></div>
