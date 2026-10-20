@@ -7,12 +7,12 @@ import Timecode from "../components/Timecode.jsx";
 import Viewer from "../components/Viewer.jsx";
 import { CONTACT } from "../site.js";
 
-const MARQUEE = ["Storytelling", "Scripting", "AI video", "Editing", "Sound", "Reels", "Shorts", "Launch films"];
+const MARQUEE = ["Storytelling", "Scripting", "Video production", "Editing", "Sound", "Reels", "Shorts", "Launch films"];
 
 const STEPS = [
   { no: "01", title: "Story", text: "We dig into your brand, your audience and the one feeling the ad should leave behind.", items: ["Brand and audience research", "Concepts and hooks", "Moodboards"] },
   { no: "02", title: "Script", text: "Every second is written: the opening hook, the voiceover and a scene-by-scene shot list.", items: ["Scripts and voiceover", "Storyboards", "Hook variations"] },
-  { no: "03", title: "Make", text: "We direct the visuals with AI: characters, products and whole worlds that would otherwise need a full shoot.", items: ["AI video and imagery", "Product shots", "Voice and music"] },
+  { no: "03", title: "Make", text: "We direct the visuals with the latest creative tools: characters, products and whole worlds that would otherwise need a full shoot.", items: ["Video and imagery", "Product shots", "Voice and music"] },
   { no: "04", title: "Edit", text: "Cut, colour, sound and captions, then exported for every platform you run on.", items: ["Editing and motion graphics", "Sound design", "Platform-ready exports"] },
 ];
 
@@ -20,7 +20,7 @@ const WHY = [
   ["Speed", "Concepts, scripts and first cuts move in days. Changes don't mean booking a new shoot."],
   ["Range", "Try different hooks, settings and characters for the same product, then keep what performs."],
   ["Budget", "Studio-level visuals without paying for locations, sets and a full crew."],
-  ["Craft", "AI does the heavy lifting. People make the calls: every frame is directed, reviewed and edited by our team."],
+  ["Craft", "Technology does the heavy lifting. People make the calls: every frame is directed, reviewed and edited by our team."],
 ];
 
 const PILLARS = [
@@ -40,13 +40,13 @@ export default function Home() {
           </div>
 
           <h1 className="display hero-title" style={{ fontSize: "clamp(2.9rem, 10.5vw, 9.2rem)" }}>
-            <span className="line"><span>AI ads that</span></span>
+            <span className="line"><span>Ads that</span></span>
             <span className="line"><span><span className="nowrap">m<OMark />ve</span> people.</span></span>
           </h1>
 
           <div className="hero-grid">
             <div>
-              <p className="lead">MotionTheory makes AI-powered ads for brands. We handle everything in between your idea and the final cut: the story, the script, the visuals and the edit.</p>
+              <p className="lead">MotionTheory makes ads for brands. We handle everything in between your idea and the final cut: the story, the script, the visuals and the edit.</p>
               <div className="hero-actions">
                 <Link className="btn btn-solid" to="/contact">Start a project <Arrow /></Link>
                 <a className="btn" href="#how">How we work</a>
@@ -76,7 +76,7 @@ export default function Home() {
               <p className="eyebrow">What we do</p>
               <h2 className="h-section">From first idea to final cut, under one roof.</h2>
             </div>
-            <p className="muted">Most brands juggle a writer, a production house and an editor. We are all three. AI tools let us move faster and try more ideas before we commit to one.</p>
+            <p className="muted">Most brands juggle a writer, a production house and an editor. We are all three. Modern tools let us move faster and try more ideas before we commit to one.</p>
           </div>
 
           <ol className="process" role="list" style={{ listStyle: "none", margin: 0, padding: 0 }}>
@@ -95,7 +95,7 @@ export default function Home() {
       <section className="section">
         <div className="wrap split">
           <div className="vstack" style={{ "--gap": "28px" }}>
-            <p className="eyebrow">Why AI</p>
+            <p className="eyebrow">Why us</p>
             <p className="statement">We can test ten ideas in the time a shoot takes to plan one. You see more options, and the strongest one goes live.</p>
             <Viewer motif="variants" tl="Takes 01–10" tr="16:9" bl="Selects" br="1 of 10" />
           </div>

@@ -8,7 +8,7 @@ const JOBS = [
     title: "AI Creative Director",
     location: "Work from home",
     type: "Full-time / Part-time",
-    summary: "Lead the look and story of our AI ad films, from first idea to final frame.",
+    summary: "Lead the look and story of our ad films, from first idea to final frame.",
     points: [
       "Hands-on with AI video and image tools (Seedance 2.5, Runway, Kling, Veo, Midjourney, Higgsfield or similar)",
       "Strong prompt craft and an eye for consistent characters, products and lighting",
@@ -90,7 +90,7 @@ export default function Career() {
       <section className="wrap page-head">
         <p className="eyebrow">Careers at MotionTheory</p>
         <h1 className="display display-l">Make ads people remember.</h1>
-        <p className="lead">We are a small, remote team building AI ads for brands. If you love telling stories with video, we would like to see your work.</p>
+        <p className="lead">We are a small, remote team building ads for brands. If you love telling stories with video, we would like to see your work.</p>
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>

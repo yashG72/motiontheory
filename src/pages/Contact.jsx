@@ -5,7 +5,7 @@ import OMark from "../components/OMark.jsx";
 import Viewer from "../components/Viewer.jsx";
 import { CONTACT, SOCIAL, FORM_ENDPOINT } from "../site.js";
 
-const SERVICES = ["Storytelling", "Scripting", "AI video", "Editing", "Full campaign"];
+const SERVICES = ["Storytelling", "Scripting", "Video production", "Editing", "Full campaign"];
 const BUDGETS = ["Under ₹50,000", "₹50,000 – ₹1,50,000", "₹1,50,000 – ₹5,00,000", "Above ₹5,00,000", "Not sure yet"];
 
 export default function Contact() {
