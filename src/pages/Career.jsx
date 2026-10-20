@@ -5,12 +5,12 @@ import { CONTACT } from "../site.js";
 // Open roles. Add another object to list a new position.
 const JOBS = [
   {
-    title: "AI Video Maker",
+    title: "AI Creative Director",
     location: "Work from home",
     type: "Full-time / Part-time",
-    summary: "Turn scripts and storyboards into finished AI ad films for brands.",
+    summary: "Lead the look and story of our AI ad films, from first idea to final frame.",
     points: [
-      "Hands-on with AI video and image tools (Runway, Kling, Veo, Midjourney, Higgsfield or similar)",
+      "Hands-on with AI video and image tools (Seedance 2.5, Runway, Kling, Veo, Midjourney, Higgsfield or similar)",
       "Strong prompt craft and an eye for consistent characters, products and lighting",
       "Understands storytelling, pacing and how an ad should feel",
       "Can take feedback and deliver on deadline",
