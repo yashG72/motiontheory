@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import Arrow from "../components/Arrow.jsx";
+import Viewer from "../components/Viewer.jsx";
 import { CONTACT } from "../site.js";
 
 // Open roles. Add another object to list a new position.
@@ -87,10 +88,13 @@ export default function Career() {
 
   return (
     <>
-      <section className="wrap page-head">
+      <section className="wrap page-head page-head-split">
+        <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
         <p className="eyebrow">Careers at MotionTheory</p>
         <h1 className="display display-l">Make ads people remember.</h1>
         <p className="lead">We are a small, remote team building ads for brands. If you love telling stories with video, we would like to see your work.</p>
+        </div>
+        <Viewer motif="storyboard" tl="Casting" tr="16:9" bl="Sc. 01 · Join the crew" br="Remote" />
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
