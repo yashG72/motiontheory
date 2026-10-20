@@ -24,7 +24,13 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Netlify Forms reads this at deploy time; the real form is in src/pages/Career.jsx -->
+    <!-- Netlify Forms reads these at deploy time; the real forms are in src/pages/Contact.jsx and Career.jsx -->
+    <form name="contact" netlify netlify-honeypot="company-website" hidden>
+      <input name="company-website" />
+      <input name="name" /><input name="brand" /><input name="email" /><input name="phone" />
+      <input type="checkbox" name="service" /><input name="budget" />
+      <textarea name="message"></textarea>
+    </form>
     <form name="career" netlify netlify-honeypot="company-website" enctype="multipart/form-data" hidden>
       <input name="company-website" />
       <input name="role" /><input name="employment" />

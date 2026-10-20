@@ -1,18 +1,21 @@
 import { useRef, useState } from "react";
 import Arrow from "../components/Arrow.jsx";
-import CopyButton from "../components/CopyButton.jsx";
 import OMark from "../components/OMark.jsx";
 import Viewer from "../components/Viewer.jsx";
-import { CONTACT, SOCIAL, FORM_ENDPOINT } from "../site.js";
+import { CONTACT } from "../site.js";
 
 const SERVICES = ["Storytelling", "Scripting", "AI video", "Editing", "Full campaign"];
 const BUDGETS = ["Under ₹50,000", "₹50,000 – ₹1,50,000", "₹1,50,000 – ₹5,00,000", "Above ₹5,00,000", "Not sure yet"];
+
+const FORM_NAME = "contact";
 
 export default function Contact() {
   const formRef = useRef(null);
   const sentRef = useRef(null);
   const [error, setError] = useState("");
-  const [result, setResult] = useState(null); // { body, subject, posted }
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const to = CONTACT.projectsEmail;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -25,39 +28,26 @@ export default function Contact() {
       bad?.focus();
       return;
     }
-    const data = new FormData(form);
-    const services = data.getAll("service");
-    const body = [
-      `Name: ${data.get("name")}`,
-      `Brand: ${data.get("brand") || "-"}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone") || "-"}`,
-      `Looking for: ${services.length ? services.join(", ") : "-"}`,
-      `Budget: ${data.get("budget") || "-"}`,
-      "",
-      data.get("message"),
-    ].join("\n");
-    const subject = `New brief from ${data.get("brand") || data.get("name")}`;
 
-    let posted = false;
-    if (FORM_ENDPOINT) {
-      try {
-        const r = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
-        posted = r.ok;
-      } catch {
-        posted = false;
-      }
+    setSending(true);
+    try {
+      // Netlify Forms picks this up; the matching static form lives in index.html
+      const body = new URLSearchParams(new FormData(form)).toString();
+      const r = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body });
+      if (!r.ok) throw new Error(r.statusText);
+      setSent(true);
+      requestAnimationFrame(() => sentRef.current?.focus());
+    } catch {
+      setError(`Something went wrong sending your brief. Please try again, or email us at ${to}.`);
+    } finally {
+      setSending(false);
     }
-    setResult({ body, subject, posted });
-    requestAnimationFrame(() => sentRef.current?.focus());
   };
 
   const reset = () => {
     formRef.current?.reset();
-    setResult(null);
+    setSent(false);
   };
-
-  const to = CONTACT.projectsEmail;
 
   return (
     <>
@@ -75,19 +65,24 @@ export default function Contact() {
           <dl className="info-list">
             <div><dt>New projects</dt><dd><a href={`mailto:${to}`}>{to}</a></dd></div>
             <div><dt>Careers</dt><dd><a href={`mailto:${CONTACT.careerEmail}`}>{CONTACT.careerEmail}</a></dd></div>
-            <div><dt>Phone</dt><dd>{CONTACT.phone
-              ? <a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>{CONTACT.phone}</a>
-              : <span className="placeholder">Phone number to be added</span>}</dd></div>
-            <div><dt>Studio</dt><dd>{CONTACT.studio || <span className="placeholder">City, India (address to be added)</span>}</dd></div>
-            <div><dt>Follow</dt><dd>
-              {SOCIAL.map((s, i) => (
-                <span key={s.name}>{i > 0 && <>&nbsp;·&nbsp; </>}<a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a></span>
-              ))}
-            </dd></div>
           </dl>
 
           <div>
-            <form className="form" ref={formRef} onSubmit={onSubmit} noValidate hidden={!!result}>
+            <form
+              className="form"
+              ref={formRef}
+              name={FORM_NAME}
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="company-website"
+              onSubmit={onSubmit}
+              noValidate
+              hidden={sent}
+            >
+              <input type="hidden" name="form-name" value={FORM_NAME} />
+              <p className="sr" aria-hidden="true">
+                <label>Leave this empty <input name="company-website" tabIndex={-1} autoComplete="off" /></label>
+              </p>
               <div className="form-row">
                 <div className="field"><label htmlFor="f-name">Your name</label><input id="f-name" name="name" type="text" autoComplete="name" required placeholder="Full name" /></div>
                 <div className="field"><label htmlFor="f-brand">Brand</label><input id="f-brand" name="brand" type="text" autoComplete="organization" placeholder="Company or brand" /></div>
@@ -116,22 +111,15 @@ export default function Contact() {
               </div>
               <div className="field"><label htmlFor="f-message">Your idea</label><textarea id="f-message" name="message" required placeholder="What are you launching, who is it for, and where will the ad run?"></textarea></div>
               {error && <p className="form-error" role="alert">{error}</p>}
-              <div><button className="btn btn-solid" type="submit">Send brief <Arrow /></button></div>
+              <div><button className="btn btn-solid" type="submit" disabled={sending}>{sending ? "Sending…" : "Send brief"} <Arrow /></button></div>
             </form>
 
-            {result && (
+            {sent && (
               <div className="sent" ref={sentRef} tabIndex={-1}>
                 <p className="eyebrow">Brief</p>
-                <h2 className="h-section">{result.posted ? "Thanks, we have your brief." : "Your brief is ready."}</h2>
-                <p className="muted">{result.posted ? "We read every brief and reply personally." : `Send it to ${to} and we will get back to you.`}</p>
-                <pre id="brief-summary">{result.body}</pre>
-                <div className="copy-row" style={{ justifyContent: "flex-start", alignItems: "center", gap: 20 }}>
-                  {!result.posted && (
-                    <a className="btn btn-solid" href={`mailto:${to}?subject=${encodeURIComponent(result.subject)}&body=${encodeURIComponent(result.body)}`}>Open in email <Arrow /></a>
-                  )}
-                  <CopyButton value={result.body} targetId="brief-summary">Copy brief</CopyButton>
-                  <button className="copy-btn" type="button" onClick={reset}>Write another</button>
-                </div>
+                <h2 className="h-section">Thanks, we have your brief.</h2>
+                <p className="muted">We read every brief and reply personally, usually within a working day.</p>
+                <div><button className="copy-btn" type="button" onClick={reset}>Write another</button></div>
               </div>
             )}
           </div>
