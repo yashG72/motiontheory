@@ -31,7 +31,7 @@ export default function About() {
       <div className="wrap"><hr className="rule rule-ink" /></div>
 
       <section className="section">
-        <div className="wrap split">
+        <div className="wrap split split-center">
           <p className="eyebrow">Our story</p>
           <div className="stack">
             <p className="statement">We started MotionTheory because brands were stuck choosing between slow, expensive shoots and cheap content that nobody remembers.</p>
@@ -74,7 +74,7 @@ export default function About() {
       </section>
 
       <section className="section band-ink">
-        <div className="wrap split">
+        <div className="wrap split split-center">
           <div className="vstack" style={{ "--gap": "28px" }}>
             <p className="eyebrow">The team</p>
           </div>
