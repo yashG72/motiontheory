@@ -891,16 +891,17 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 @media (max-width: 560px) { .step + .step::before { display: none; } }
 
 /* =========================================================
-   Opening titles (Intro.jsx): the logo builds on a dark frame,
-   then the frame lifts away to reveal the page
+   Opening titles (Intro.jsx): the O draws itself, the logo
+   opens out around it, then the frame fades away
    ========================================================= */
 
 html.intro, html.intro body { overflow: hidden; }
-/* Hold the hero's own entrance until the frame lifts */
+/* Hold the hero's own entrance until the frame fades */
 html.intro .hero-title .line > span { animation-play-state: paused; }
 
 .intro-screen {
   --ease: cubic-bezier(.2, .7, .1, 1);
+  --glide: cubic-bezier(.65, 0, .2, 1);
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -910,21 +911,21 @@ html.intro .hero-title .line > span { animation-play-state: paused; }
   color: var(--paper);
   overflow: hidden;
   cursor: default;
-  clip-path: inset(0 0 0 0);
 }
 .intro-screen.is-out {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1s cubic-bezier(.76, 0, .24, 1) .12s;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .9s ease;
 }
 
-/* Soft moving light and film grain, standing in for a shader */
+/* Soft moving light and film grain */
 .intro-screen::before {
   content: "";
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(40% 35% at 50% 55%, rgba(252, 250, 246, .09), transparent 70%),
-    radial-gradient(30% 30% at 30% 30%, rgba(200, 64, 44, .06), transparent 70%);
+    radial-gradient(40% 35% at 50% 55%, rgba(252, 250, 246, .08), transparent 70%),
+    radial-gradient(30% 30% at 30% 30%, rgba(200, 64, 44, .05), transparent 70%);
   animation: intro-drift 6s ease-in-out infinite alternate;
 }
 @keyframes intro-drift { to { transform: translate(4%, -3%) scale(1.08); } }
@@ -951,16 +952,21 @@ html.intro .hero-title .line > span { animation-play-state: paused; }
   justify-items: center;
   font-family: var(--display);
   font-weight: 300;
-  font-size: clamp(46px, 11vw, 148px);
-  line-height: 1.04;
+  font-size: clamp(30px, 6vw, 76px);
+  line-height: 1.08;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  /* Starts with the O at the centre of the screen, then glides into place */
+  animation: intro-glide 1.1s var(--glide) 1.25s both;
+}
+@keyframes intro-glide {
+  from { transform: translate(calc(var(--dx, 0px) * 1.5), calc(var(--dy, 0px) * 1.5)) scale(1.5); }
+  to { transform: none; }
 }
 .is-out .intro-logo {
-  transform: translateY(-8vh) scale(.96);
-  opacity: 0;
-  filter: blur(6px);
-  transition: transform .9s cubic-bezier(.76, 0, .24, 1), opacity .7s ease, filter .7s ease;
+  scale: 1.04;
+  filter: blur(4px);
+  transition: scale .9s ease, filter .9s ease;
 }
 
 .intro-line {
@@ -968,36 +974,66 @@ html.intro .hero-title .line > span { animation-play-state: paused; }
   margin-right: -0.16em; /* cancel the tracking after the last letter */
   white-space: nowrap;
 }
-.intro-char {
+
+/* The O: circle draws round, then the bar draws across */
+.intro-char-o { display: inline-block; }
+.intro-o {
   display: inline-block;
-  animation: intro-char 1s var(--ease) both;
-  animation-delay: calc(.2s + var(--i) * .07s);
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: -0.04em;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.6;
+  stroke-linecap: round;
 }
-@keyframes intro-char {
-  from { transform: translateY(70%); opacity: 0; filter: blur(12px); }
-  60% { filter: blur(0); }
+.intro-o circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  animation: intro-draw .9s cubic-bezier(.6, 0, .3, 1) .2s forwards;
+}
+.intro-o line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: intro-draw .45s var(--ease) 1s forwards;
+}
+@keyframes intro-draw { to { stroke-dashoffset: 0; } }
+
+/* The other letters open out from the O as it glides */
+.intro-char:not(.intro-char-o) {
+  display: inline-block;
+  animation: intro-open .9s var(--ease) both;
+  animation-delay: calc(1.45s + var(--k) * .08s);
+}
+@keyframes intro-open {
+  from { transform: translateX(calc(var(--d) * -0.45em)); opacity: 0; filter: blur(8px); }
   to { transform: none; opacity: 1; filter: blur(0); }
 }
 
-/* The O's bar draws in once the letters have landed */
-.intro-o { vertical-align: -0.02em; border-width: max(1.5px, 0.03em); }
-.intro-o::after { height: max(1.5px, 0.03em); transform: scaleX(0); animation: intro-bar-in .6s var(--ease) 1.05s both; }
-@keyframes intro-bar-in { to { transform: scaleX(1); } }
+/* THEORY wipes in left to right underneath */
+.intro-line-2 {
+  clip-path: inset(0 100% 0 0);
+  animation: intro-wipe 1s var(--glide) 1.9s forwards;
+}
+@keyframes intro-wipe { to { clip-path: inset(0 -10% 0 0); } }
 
 .intro-tagline {
-  margin-top: 0.9em;
+  margin-top: 1.1em;
   font-family: var(--body);
   font-weight: 400;
-  font-size: clamp(9px, .15em, 18px);
+  font-size: clamp(8px, .17em, 13px);
   letter-spacing: 0.6em;
   margin-right: -0.6em;
   white-space: nowrap;
-  animation: intro-tagline 1.2s var(--ease) 1.15s both;
+  animation: intro-tagline 1.1s var(--ease) 2.4s both;
 }
 .intro-tagline i { font-style: normal; margin-inline: 1.2em; opacity: .7; }
 @keyframes intro-tagline {
-  from { opacity: 0; letter-spacing: 1.2em; margin-right: -1.2em; }
-  to { opacity: .85; letter-spacing: 0.6em; margin-right: -0.6em; }
+  from { opacity: 0; letter-spacing: 1.1em; margin-right: -1.1em; }
+  to { opacity: .8; letter-spacing: 0.6em; margin-right: -0.6em; }
 }
 
 /* Playhead along the bottom, with a load count */
@@ -1016,7 +1052,6 @@ html.intro .hero-title .line > span { animation-play-state: paused; }
   color: rgba(252, 250, 246, .6);
   animation: intro-fade .6s ease .2s both;
 }
-.is-out .intro-bar { opacity: 0; transition: opacity .3s ease; }
 @keyframes intro-fade { from { opacity: 0; } }
 .intro-track {
   position: absolute;
@@ -1029,7 +1064,7 @@ html.intro .hero-title .line > span { animation-play-state: paused; }
   inset: 0;
   background: var(--paper);
   transform-origin: left;
-  animation: intro-load 2.2s cubic-bezier(.5, 0, .2, 1) .15s both;
+  animation: intro-load 3s cubic-bezier(.5, 0, .2, 1) .15s both;
 }
 @keyframes intro-load { from { transform: scaleX(0); } }
 
@@ -1037,7 +1072,7 @@ html.intro .hero-title .line > span { animation-play-state: paused; }
 .intro-count {
   font-variant-numeric: tabular-nums;
   counter-reset: n var(--intro-n);
-  animation: intro-count 2.2s cubic-bezier(.5, 0, .2, 1) .15s both;
+  animation: intro-count 3s cubic-bezier(.5, 0, .2, 1) .15s both;
 }
 .intro-count::after { content: counter(n, decimal-leading-zero) "%"; }
 @keyframes intro-count { from { --intro-n: 0; } to { --intro-n: 100; } }
