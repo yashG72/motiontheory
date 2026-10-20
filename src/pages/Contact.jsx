@@ -4,7 +4,7 @@ import OMark from "../components/OMark.jsx";
 import Viewer from "../components/Viewer.jsx";
 import { CONTACT } from "../site.js";
 
-const SERVICES = ["Storytelling", "Scripting", "AI video", "Editing", "Full campaign"];
+const SERVICES = ["Storytelling", "Scripting", "Video production", "AI visuals", "Editing", "Full campaign"];
 const BUDGETS = ["Under ₹50,000", "₹50,000 – ₹1,50,000", "₹1,50,000 – ₹5,00,000", "Above ₹5,00,000", "Not sure yet"];
 
 const FORM_NAME = "contact";
@@ -55,7 +55,7 @@ export default function Contact() {
         <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
         <p className="eyebrow">Contact us</p>
         <h1 className="display display-l">Let’s make something that <span className="nowrap">m<OMark />ves.</span></h1>
-        <p className="lead">Tell us about your brand and the ad you have in mind. A rough idea is enough to start.</p>
+        <p className="lead">Tell us about your brand and the story you want people to hear. A rough idea is enough to start.</p>
         </div>
         <Viewer motif="waveform" tl="Rec · Audio" tr="Stereo" bl="Sc. 01 · Hello" br="48 kHz" />
       </section>
