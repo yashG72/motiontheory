@@ -92,7 +92,7 @@ export default function Career() {
         <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
         <p className="eyebrow">Careers at MotionTheory</p>
         <h1 className="display display-l">Make ads people remember.</h1>
-        <p className="lead">We are a small, remote team building ads for brands. If you love telling stories with video, we would like to see your work.</p>
+        <p className="lead">We are a small, remote team helping brands take their stories to the masses. If you love telling stories with video, we would like to see your work.</p>
         </div>
         <Viewer motif="storyboard" tl="Casting" tr="16:9" bl="Sc. 01 · Join the crew" br="Remote" />
       </section>

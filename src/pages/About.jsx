@@ -11,9 +11,9 @@ const PILLARS = [
 const PROCESS = [
   ["01", "Brief", "We learn your brand, your product, your audience and what the ad needs to achieve."],
   ["02", "Story and script", "We pitch concepts, then write the chosen one into a full script and storyboard for your approval."],
-  ["03", "Production", "We create the visuals, voice and music with the latest production tools, directed shot by shot."],
+  ["03", "Production", "We shoot, create and record what the script needs: live-action, AI-driven visuals, voice and music, directed shot by shot."],
   ["04", "Edit and review", "We cut, colour and sound-design the ad, then refine it with your feedback."],
-  ["05", "Delivery", "You receive final files in every format and length your platforms need."],
+  ["05", "Delivery", "You receive final files in every format and length your platforms need, ready to reach your audience."],
 ];
 
 export default function About() {
@@ -22,8 +22,8 @@ export default function About() {
       <section className="wrap page-head page-head-split">
         <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
         <p className="eyebrow">About us</p>
-        <h1 className="display display-l">Story first.<br />Tools second.</h1>
-        <p className="lead">MotionTheory is a creative studio that makes ads for brands. We believe a good ad is a good story, told well. New technology changes how fast we can tell it, and how many versions we can try before we choose.</p>
+        <h1 className="display display-l">Story first.<br />Always.</h1>
+        <p className="lead">MotionTheory is a storytelling and video production studio for brands. We help you find the story only your brand can tell, then produce it into films that reach the masses.</p>
         </div>
         <Viewer motif="script" tl="Take 01" tr="16:9" bl="Sc. 00 · Our story" br="24 fps" />
       </section>
@@ -34,9 +34,9 @@ export default function About() {
         <div className="wrap split split-center">
           <p className="eyebrow">Our story</p>
           <div className="stack">
-            <p className="statement">We started MotionTheory because brands were stuck choosing between slow, expensive shoots and cheap content that nobody remembers.</p>
-            <p className="muted">New production tools opened a third path. With the right story and a careful edit, a small team can now make ads that look like big productions. We put storytellers, scriptwriters, editors and visual artists in one room, so your idea never gets lost between agencies.</p>
-            <p className="muted">Today we make ads for brands across social, web and TV: Reels and Shorts that stop the scroll, product films, launch videos and full campaigns.</p>
+            <p className="statement">We started MotionTheory because great brands often have great stories that never reach the people they are meant for.</p>
+            <p className="muted">A story needs more than a good idea. It needs a sharp script, the right production, a careful edit and a format made for where people actually watch. We put storytellers, scriptwriters, directors, editors and visual artists in one room, so your idea never gets lost between agencies.</p>
+            <p className="muted">Today we make brand films across social, web and TV: Reels and Shorts that stop the scroll, product films, launch videos and full campaigns, shot live, made with AI, or both.</p>
           </div>
         </div>
       </section>
@@ -79,7 +79,7 @@ export default function About() {
             <p className="eyebrow">The team</p>
           </div>
           <div className="stack">
-            <p className="statement">A young team of storytellers, editors and visual artists who love ads that people actually want to watch.</p>
+            <p className="statement">A young team of storytellers, filmmakers, editors and visual artists who love ads that people actually want to watch.</p>
             <p className="muted">We are growing. If that sounds like you, we would like to hear from you.</p>
             <div><Link className="btn" to="/career">See open roles <Arrow /></Link></div>
           </div>
