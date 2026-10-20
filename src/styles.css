@@ -548,44 +548,29 @@ body::before {
   justify-self: start;
 }
 
-/* ---------- Poster-style career block ---------- */
+/* ---------- Career: open roles ---------- */
 
-.poster { max-width: 980px; }
-.poster .tagline { margin-bottom: 0; }
-.poster-hero .were { font-size: clamp(2.6rem, 9vw, 6.4rem); font-weight: 300; line-height: 1; letter-spacing: 0.01em; margin: 0; }
-.poster-hero .hiring { font-size: clamp(4.2rem, 17vw, 12.5rem); font-weight: 400; line-height: 0.9; letter-spacing: 0.005em; margin: 0; }
-
-.role-title { font-size: clamp(1.8rem, 5vw, 3.3rem); font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; margin: 0; }
-.pay { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 0.4em; margin: 0; line-height: 1.1; }
-.pay-amount { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 400; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
-.pay-unit { font-size: clamp(1.5rem, 4vw, 2.6rem); font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
-.pay-plus { font-size: clamp(1rem, 2.2vw, 1.35rem); letter-spacing: 0.32em; text-transform: uppercase; margin: 0.4em 0 0; }
-
-.req-ben {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-}
-.req-ben > div { min-width: 0; padding-right: 40px; }
-.req-ben > div + div { padding-left: 48px; padding-right: 0; border-left: 1px solid var(--rule); }
-.req-ben ul { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
-.req-ben li { position: relative; padding-left: 2em; font-size: 1.06rem; line-height: 1.45; }
-.req-ben li::before { content: ""; position: absolute; left: 0.3em; top: 0.68em; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); }
-@media (max-width: 700px) {
-  .req-ben { grid-template-columns: 1fr; gap: 36px; }
-  .req-ben > div, .req-ben > div + div { padding: 0; border-left: 0; }
-  .req-ben > div + div { border-top: 1px solid var(--rule); padding-top: 36px; }
-}
-
-.apply-box {
+.jobs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; }
+.job {
   border: 1px solid var(--ink);
   border-radius: 18px;
-  padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px);
+  padding: clamp(24px, 4vw, 40px);
   display: grid;
-  justify-items: center;
-  gap: 14px;
-  text-align: center;
+  gap: 20px;
+  align-content: start;
+  min-width: 0;
 }
-.apply-box .email-big { border-bottom: 0; justify-self: center; }
+.job-head { display: grid; gap: 14px; }
+.job-title { font-size: clamp(1.5rem, 3.4vw, 2.2rem); font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; margin: 0; line-height: 1.15; }
+.job-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.job-tags li { border: 1px solid var(--rule); border-radius: 999px; padding: 0.35em 0.95em; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.job-summary { margin: 0; font-size: 1.06rem; }
+.job-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; color: var(--ink-2); }
+.job-points li { position: relative; padding-left: 1.6em; line-height: 1.45; }
+.job-points li::before { content: ""; position: absolute; left: 0.3em; top: 0.68em; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); }
+.field input[type="file"] { border-bottom-style: dashed; cursor: pointer; font-size: 0.95rem; }
+.btn:disabled { opacity: 0.6; cursor: wait; }
+
 .copy-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .copy-btn {
   font-family: var(--body);
@@ -600,16 +585,6 @@ body::before {
   color: var(--ink-2);
 }
 .copy-btn:hover { color: var(--ink); border-bottom-color: var(--ink); }
-
-.poster-foot {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-}
-.poster-foot .eyebrow { font-size: 0.66rem; letter-spacing: 0.3em; }
 
 /* ---------- Forms ---------- */
 
