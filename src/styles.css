@@ -503,6 +503,7 @@ body::before {
   gap: 32px clamp(32px, 6vw, 96px);
 }
 .split > * { min-width: 0; }
+.split-center { align-items: center; }
 .stack { display: grid; gap: 1.2em; align-content: start; }
 @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
 
