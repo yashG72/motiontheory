@@ -24,6 +24,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Netlify Forms reads this at deploy time; the real form is in src/pages/Career.jsx -->
+    <form name="career" netlify netlify-honeypot="company-website" enctype="multipart/form-data" hidden>
+      <input name="company-website" />
+      <input name="role" /><input name="employment" />
+      <input name="name" /><input name="email" /><input name="phone" /><input name="city" />
+      <input name="experience" /><input name="tools" /><input name="portfolio" />
+      <input type="file" name="resume" />
+      <textarea name="message"></textarea>
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
