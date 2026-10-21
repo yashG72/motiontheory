@@ -88,7 +88,7 @@ export default function Career() {
 
   return (
     <>
-      <section className="wrap page-head page-head-split">
+      <section className="wrap page-head page-head-split page-head-center">
         <div className="vstack" style={{ "--gap": "clamp(32px, 5vw, 56px)" }}>
         <p className="eyebrow">Careers at MotionTheory</p>
         <h1 className="display display-l">We make ads that people remember.</h1>
