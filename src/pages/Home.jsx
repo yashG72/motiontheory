@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Arrow from "../components/Arrow.jsx";
 import OMark from "../components/OMark.jsx";
@@ -6,8 +5,6 @@ import Tagline from "../components/Tagline.jsx";
 import Timecode from "../components/Timecode.jsx";
 import Viewer from "../components/Viewer.jsx";
 import { CONTACT } from "../site.js";
-
-const MARQUEE = ["Brand films", "Storytelling", "Scripting", "Video production", "Live-action shoots", "AI visuals", "Editing", "Reels", "Shorts", "Campaigns"];
 
 const STEPS = [
   { no: "01", title: "Story", text: "We dig into your brand, your audience and the one feeling the ad should leave behind.", items: ["Brand and audience research", "Concepts and hooks", "Moodboards"] },
@@ -57,16 +54,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="marquee" aria-label={MARQUEE.join(", ")}>
-        <div className="marquee-track" aria-hidden="true">
-          {[0, 1].map((copy) =>
-            MARQUEE.map((word) => (
-              <Fragment key={`${copy}-${word}`}>
-                <span>{word}</span><span aria-hidden="true">/</span>
-              </Fragment>
-            ))
-          )}
-        </div>
+      <div className="scrub" aria-hidden="true">
+        <div className="scrub-ticks"></div>
+        <div className="scrub-head"></div>
       </div>
 
       <section className="section" id="how">
