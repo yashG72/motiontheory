@@ -680,7 +680,7 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .site-footer { background: var(--ink); color: var(--paper); padding-block: clamp(96px, 13vw, 160px) 40px; }
 .footer-top {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr));
   gap: 56px;
 }
 .footer-top > * { min-width: 0; }
