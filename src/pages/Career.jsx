@@ -89,7 +89,7 @@ export default function Career() {
   return (
     <>
       <section className="wrap page-head page-head-split">
-        <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
+        <div className="vstack" style={{ "--gap": "clamp(32px, 5vw, 56px)" }}>
         <p className="eyebrow">Careers at MotionTheory</p>
         <h1 className="display display-l">Make ads people remember.</h1>
         <p className="lead">We are a small, remote team helping brands take their stories to the masses. If you love telling stories with video, we would like to see your work.</p>
@@ -98,7 +98,7 @@ export default function Career() {
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap vstack" style={{ "--gap": "28px" }}>
+        <div className="wrap vstack" style={{ "--gap": "36px" }}>
           <p className="eyebrow">Open roles</p>
           <div className="jobs">
             {JOBS.map((job) => (
@@ -121,7 +121,7 @@ export default function Career() {
 
       <section className="section band-soft" id="apply" style={{ scrollMarginTop: 80 }}>
         <div className="wrap contact-grid">
-          <div className="vstack" style={{ "--gap": "20px" }}>
+          <div className="vstack" style={{ "--gap": "28px" }}>
             <p className="eyebrow">Apply</p>
             <h2 className="h-section">Show us how you work.</h2>
             <p className="muted">Fill in the form and share your best work. We read every application and reply to shortlisted candidates within a week.</p>

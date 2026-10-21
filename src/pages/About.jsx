@@ -20,7 +20,7 @@ export default function About() {
   return (
     <>
       <section className="wrap page-head page-head-split">
-        <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
+        <div className="vstack" style={{ "--gap": "clamp(32px, 5vw, 56px)" }}>
         <p className="eyebrow">About us</p>
         <h1 className="display display-l">Story first.<br />Always.</h1>
         <p className="lead">MotionTheory is a storytelling and video production studio for brands. We help you find the story only your brand can tell, then produce it into films that reach the masses.</p>
@@ -42,7 +42,7 @@ export default function About() {
       </section>
 
       <section className="section band-soft">
-        <div className="wrap vstack" style={{ "--gap": "clamp(40px, 6vw, 64px)" }}>
+        <div className="wrap vstack" style={{ "--gap": "clamp(56px, 8vw, 88px)" }}>
           <div className="section-head" style={{ marginBottom: 0 }}>
             <p className="eyebrow">The name on the logo</p>
             <p className="muted">Our tagline is how we check every piece of work before it leaves the studio.</p>
@@ -58,7 +58,7 @@ export default function About() {
       <section className="section">
         <div className="wrap">
           <div className="split">
-          <div className="vstack" style={{ "--gap": "24px" }}>
+          <div className="vstack" style={{ "--gap": "32px" }}>
             <p className="eyebrow">How we work</p>
             <h2 className="h-section">One team, one brief, start to finish.</h2>
             <p className="muted">You get a single point of contact who stays with your project from the first call to the final export.</p>
@@ -75,7 +75,7 @@ export default function About() {
 
       <section className="section band-ink">
         <div className="wrap split split-center">
-          <div className="vstack" style={{ "--gap": "28px" }}>
+          <div className="vstack" style={{ "--gap": "36px" }}>
             <p className="eyebrow">The team</p>
           </div>
           <div className="stack">

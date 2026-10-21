@@ -40,8 +40,8 @@ export default function Home() {
           </div>
 
           <h1 className="display hero-title" style={{ fontSize: "clamp(2.9rem, 10.5vw, 9.2rem)" }}>
-            <span className="line"><span>Stories that</span></span>
-            <span className="line"><span><span className="nowrap">m<OMark />ve</span> millions.</span></span>
+            <span className="line"><span>Visuals that</span></span>
+            <span className="line"><span><span className="nowrap">m<OMark />ve</span> people.</span></span>
           </h1>
 
           <div className="hero-grid">
@@ -72,7 +72,7 @@ export default function Home() {
       <section className="section" id="how">
         <div className="wrap">
           <div className="section-head">
-            <div className="vstack" style={{ "--gap": "20px" }}>
+            <div className="vstack" style={{ "--gap": "28px" }}>
               <p className="eyebrow">What we do</p>
               <h2 className="h-section">From your story to millions of screens.</h2>
             </div>
@@ -94,7 +94,7 @@ export default function Home() {
 
       <section className="section">
         <div className="wrap split">
-          <div className="vstack" style={{ "--gap": "28px" }}>
+          <div className="vstack" style={{ "--gap": "36px" }}>
             <p className="eyebrow">Why us</p>
             <p className="statement">A story only works if people see it. We make films built to travel: a clear hook, a story people remember, and a cut for every platform.</p>
             <Viewer motif="variants" tl="Takes 01–10" tr="16:9" bl="Selects" br="1 of 10" />
@@ -108,7 +108,7 @@ export default function Home() {
       </section>
 
       <section className="section band-ink">
-        <div className="wrap vstack" style={{ "--gap": "clamp(40px, 6vw, 64px)" }}>
+        <div className="wrap vstack" style={{ "--gap": "clamp(56px, 8vw, 88px)" }}>
           <p className="eyebrow">What we stand for</p>
           <div className="pillars">
             {PILLARS.map(([h, p]) => (
