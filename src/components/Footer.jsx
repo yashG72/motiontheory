@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { asset } from "../asset.js";
 import Tagline from "./Tagline.jsx";
-import { CONTACT, SOCIAL } from "../site.js";
+import { CONTACT } from "../site.js";
 
 export default function Footer() {
   return (
@@ -26,14 +26,6 @@ export default function Footer() {
             <ul>
               <li><a href={`mailto:${CONTACT.projectsEmail}`}>{CONTACT.projectsEmail}</a></li>
               <li><a href={`mailto:${CONTACT.careerEmail}`}>{CONTACT.careerEmail}</a></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Follow</h4>
-            <ul>
-              {SOCIAL.map((s) => (
-                <li key={s.name}><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a></li>
-              ))}
             </ul>
           </div>
         </div>

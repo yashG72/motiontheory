@@ -5,10 +5,3 @@ export const CONTACT = {
   careerEmail: "career@motiontheory.media",
 };
 
-// Placeholder links: swap "#" for the real profile URLs
-export const SOCIAL = [
-  { name: "Instagram", url: "#" },
-  { name: "LinkedIn", url: "#" },
-  { name: "YouTube", url: "#" },
-];
-
