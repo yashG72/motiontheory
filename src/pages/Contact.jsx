@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <>
       <section className="wrap page-head page-head-split">
-        <div className="vstack" style={{ "--gap": "clamp(24px, 4vw, 40px)" }}>
+        <div className="vstack" style={{ "--gap": "clamp(32px, 5vw, 56px)" }}>
         <p className="eyebrow">Contact us</p>
         <h1 className="display display-l">Let’s make something that <span className="nowrap">m<OMark />ves.</span></h1>
         <p className="lead">Tell us about your brand and the story you want people to hear. A rough idea is enough to start.</p>
