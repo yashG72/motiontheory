@@ -7,26 +7,13 @@ import Timecode from "../components/Timecode.jsx";
 import Viewer from "../components/Viewer.jsx";
 import { CONTACT } from "../site.js";
 
-const MARQUEE = ["Brand films", "Storytelling", "Scripting", "Video production", "Live-action shoots", "AI visuals", "Editing", "Reels", "Shorts", "Campaigns"];
+const MARQUEE = ["Brand films", "Storytelling", "Scripting", "Video production", "Editing", "Reels", "Shorts", "Campaigns"];
 
 const STEPS = [
-  { no: "01", title: "Story", text: "We dig into your brand, your audience and the one feeling the ad should leave behind.", items: ["Brand and audience research", "Concepts and hooks", "Moodboards"] },
-  { no: "02", title: "Script", text: "Every second is written: the opening hook, the voiceover and a scene-by-scene shot list.", items: ["Scripts and voiceover", "Storyboards", "Hook variations"] },
-  { no: "03", title: "Make", text: "We produce it the way the story needs: on set with a crew, with AI-driven visuals, or a mix of both. Every shot is directed.", items: ["Live-action shoots", "AI visuals and product shots", "Voice and music"] },
-  { no: "04", title: "Edit", text: "Cut, colour, sound and captions, then shaped for every screen your audience watches.", items: ["Editing and motion graphics", "Sound design", "Platform-ready exports"] },
-];
-
-const WHY = [
-  ["Reach", "Every ad is planned for where your audience already watches: Reels, Shorts, YouTube, OTT and TV."],
-  ["Story", "We find the one idea that makes your brand worth remembering, and build everything around it."],
-  ["Full production", "Live-action shoots, AI-driven visuals or both. We pick what serves the story and the budget, not a single method."],
-  ["One team", "Writers, directors, producers and editors under one roof, so your story stays intact from brief to final cut."],
-];
-
-const PILLARS = [
-  ["Visuals", "Frames worth stopping a scroll for, made with care down to the last second."],
-  ["Ideas", "A clear story comes first. Every camera, tool and technique serves the idea."],
-  ["Impact", "We judge an ad by how far it travels and what it does for your brand: reach, recall and sales."],
+  { no: "01", title: "Story", text: "We dig into your brand, your audience and the one feeling the ad should leave behind." },
+  { no: "02", title: "Script", text: "Every second is written: the opening hook, the voiceover and a scene-by-scene shot list." },
+  { no: "03", title: "Make", text: "We produce it the way the story needs: on set with a crew, with AI-driven visuals, or a mix of both. Every shot is directed." },
+  { no: "04", title: "Edit", text: "Cut, colour, sound and captions, then shaped for every screen your audience watches." },
 ];
 
 export default function Home() {
@@ -85,36 +72,9 @@ export default function Home() {
                 <span className="step-no">{s.no}</span>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
-                <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="wrap split">
-          <div className="vstack" style={{ "--gap": "36px" }}>
-            <p className="eyebrow">Why us</p>
-            <p className="statement">A story only works if people see it. We make films built to travel: a clear hook, a story people remember, and a cut for every platform.</p>
-            <Viewer motif="variants" tl="Takes 01–10" tr="16:9" bl="Selects" br="1 of 10" />
-          </div>
-          <div className="rows">
-            {WHY.map(([h, p]) => (
-              <div className="row" key={h}><h3>{h}</h3><p>{p}</p></div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section band-ink">
-        <div className="wrap vstack" style={{ "--gap": "clamp(56px, 8vw, 88px)" }}>
-          <p className="eyebrow">What we stand for</p>
-          <div className="pillars">
-            {PILLARS.map(([h, p]) => (
-              <div className="pillar" key={h}><h3>{h}</h3><p className="muted">{p}</p></div>
-            ))}
-          </div>
         </div>
       </section>
 

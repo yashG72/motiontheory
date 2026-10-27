@@ -14,7 +14,6 @@ const JOBS = [
       "Hands-on with AI video and image tools (Seedance 2.5, Runway, Kling, Veo, Midjourney, Higgsfield or similar)",
       "Strong prompt craft and an eye for consistent characters, products and lighting",
       "Understands storytelling, pacing and how an ad should feel",
-      "Can take feedback and deliver on deadline",
     ],
   },
   {
@@ -25,7 +24,6 @@ const JOBS = [
     points: [
       "Strong editing and storytelling skills",
       "Proficiency in Premiere Pro, After Effects, DaVinci Resolve or similar",
-      "Experience with Reels, Shorts and branded content",
       "Creative eye, attention to detail and ability to meet deadlines",
     ],
   },
