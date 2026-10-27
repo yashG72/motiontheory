@@ -388,25 +388,26 @@ body::before {
 }
 @keyframes head { from { left: 0; } to { left: 100%; } }
 
-/* ---------- Marquee ---------- */
+/* ---------- Scrub line (thin timeline between hero and process) ---------- */
 
-.marquee {
-  border-block: 1px solid var(--ink);
+.scrub {
+  position: relative;
+  height: 14px;
   overflow: hidden;
-  white-space: nowrap;
-  padding-block: 32px;
+  border-bottom: 1px solid var(--ink);
 }
-.marquee-track {
-  display: inline-flex;
-  gap: 2.4em;
-  animation: marquee 38s linear infinite;
-  font-weight: 300;
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.scrub-ticks {
+  position: absolute; inset: 0 -120px 0 0;
+  background:
+    repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 120px) bottom / 100% 9px no-repeat,
+    repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 24px) bottom / 100% 5px no-repeat;
+  animation: scrub-drift 6s linear infinite;
 }
-.marquee-track span[aria-hidden] { opacity: 0.35; }
-@keyframes marquee { to { transform: translateX(-50%); } }
+.scrub-head {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: var(--rec);
+  animation: head 14s linear infinite;
+}
+@keyframes scrub-drift { to { transform: translateX(-120px); } }
 
 /* ---------- Process (a real sequence) ---------- */
 
